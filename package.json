@@ -1,0 +1,27 @@
+{
+  "name": "smart_contract",
+  "version": "1.0.0",
+  "description": "Package for use Web3 contract + openzeppelin",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobodyw/smart_contract.git"
+  },
+  "author": "nobodyw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nobodyw/smart_contract/issues"
+  },
+  "homepage": "https://github.com/nobodyw/smart_contract#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.2",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "web3": "^1.7.0"
+  }
+}
