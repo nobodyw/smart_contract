@@ -33,3 +33,8 @@ truffle test
 1. Bank `Bank.sol` :money_with_wings:
 
 Contract allows you to deposit funds, see your balance, withdraw your funds
+
+`You can view the contract Bank.sol and interact with the Ropsten testnet`
+```console
+https://ropsten.etherscan.io/address/0x550C7Cb5C955B4c5c258fA020eE8f458F59Ac118#code
+```
