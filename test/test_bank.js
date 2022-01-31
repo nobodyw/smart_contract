@@ -1,8 +1,8 @@
 const { expectRevert } = require('@openzeppelin/test-helpers');
 const Assert = require("assert");
 const Web3 = require('web3');
-
 const BankContract = artifacts.require("./Bank.sol");
+
 contract("Bank", function(accounts){
     const owner = accounts[0];
     const userBank = accounts[1];

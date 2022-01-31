@@ -30,7 +30,7 @@ truffle test
 
 # List of contracts :briefcase:
 
-1. Bank `Bank.sol` :money_with_wings:
+1. Decentralize Bank `Bank.sol` :money_with_wings:
 
 Contract allows you to deposit funds, see your balance, withdraw your funds
 

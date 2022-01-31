@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
-import "@openzeppelin/contracts/access/Ownable.sol";
 
 /*
 * @title operation of a simple decentralized bank
@@ -8,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 * @notice contract allows you to deposit funds, see your balance, withdraw your funds
 * @dev the funds used are fictitious funds and in no case ERC-20
 */
-contract Bank is Ownable{
+contract Bank{
     mapping(address => uint) _balances;
 
     event Deposit(uint _amount);
