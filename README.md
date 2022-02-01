@@ -38,3 +38,13 @@ Contract allows you to deposit funds, see your balance, withdraw your funds
 ```console
 https://ropsten.etherscan.io/address/0x550C7Cb5C955B4c5c258fA020eE8f458F59Ac118#code
 ```
+----------------------------
+
+2. Decentralize Whitelisting `Admin.sol` :cop:
+
+The contract allows the owner to add an address to a whitelist or a blacklist
+
+`You can view the contract Admin.sol and interact with the Ropsten testnet`
+```console
+https://ropsten.etherscan.io/address/0xE86ac2911f45159080e6Bc14cDf28B7628DC4491#code
+```
