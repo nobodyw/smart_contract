@@ -19,6 +19,7 @@ contract Admin is Ownable{
 /*
 * @notice The owner adds an address in the whiteList
 * @dev If the address was blacklisted add to whitelist
+* @param Address whitelisted
 */
     function addToWhiteList(address _addressWhiteListed) external onlyOwner {
         require(!WhiteList[_addressWhiteListed], "The account is already WhiteListed");
@@ -31,6 +32,7 @@ contract Admin is Ownable{
 /*
 * @notice The owner adds an address in the blacklist
 * @dev If the address was whitelisted add to blacklist
+* @param Address blacklisted
 */
     function addToBlackList(address _addressBlackListed) external onlyOwner {
         require(!BlackList[_addressBlackListed], "The account is already BlackListed");
