@@ -42,6 +42,10 @@ contract Voting is Ownable{
         _;
     }
 
+    function getAllProposals() external view returns(Proposal[] memory){
+        return Proposals;
+    }
+
     function registerVoter(address _voter) external onlyOwner{
         require(workflowStatus == WorkflowStatus.RegisteringVoters, 'cannot add new voters');
         require(!Voters[_voter].isRegistered, "The voter is already registered");
@@ -109,6 +113,7 @@ contract Voting is Ownable{
         require(workflowStatus == WorkflowStatus.VotingSessionEnded, 'cannot count vote');
 
         uint indexWinner = 0;
+        delete finalist;
 
         for(uint i = 0; i < Proposals.length; i++){
             if(Proposals[i].voteCount > indexWinner){
@@ -123,12 +128,20 @@ contract Voting is Ownable{
         }
         if(finalist.length > 1){
             workflowStatus = WorkflowStatus.VotingSessionStarted;
-            Proposals = finalist;
+            delete Proposals;
+            for(uint i = 0; i < finalist.length; i++){
+                Proposals.push(finalist[i]);
+            }
             emit changeWorkflowStatus(WorkflowStatus.VotingSessionEnded,WorkflowStatus.VotingSessionStarted);
             return Proposals;
         }
         workflowStatus = WorkflowStatus.VotesTallied;
-        Winner = Proposals[0];
+
+        Winner.description = finalist[0].description;
+        Winner.numberFinalist = finalist[0].numberFinalist;
+        Winner.voteCount = finalist[0].voteCount;
+        Winner.proposalAddress = finalist[0].proposalAddress;
+
         emit changeWorkflowStatus(WorkflowStatus.VotingSessionEnded,WorkflowStatus.VotesTallied);
         return Proposals;
     }
