@@ -36,6 +36,7 @@ contract Voting is Ownable{
     event changeWorkflowStatus(WorkflowStatus oldWorkFlow, WorkflowStatus newWorkFlow);
     event registerProposal(Proposal proposal);
     event setVote(Voter voter, Proposal proposal);
+    event eventCountVote(bool secondTurn);
 
     modifier onlyVoter(){
         require(Voters[msg.sender].isRegistered,"You are not voter");
@@ -133,8 +134,10 @@ contract Voting is Ownable{
                 Proposals.push(finalist[i]);
             }
             emit changeWorkflowStatus(WorkflowStatus.VotingSessionEnded,WorkflowStatus.VotingSessionStarted);
+            emit eventCountVote(true);
             return Proposals;
         }
+
         workflowStatus = WorkflowStatus.VotesTallied;
 
         Winner.description = finalist[0].description;
@@ -143,6 +146,7 @@ contract Voting is Ownable{
         Winner.proposalAddress = finalist[0].proposalAddress;
 
         emit changeWorkflowStatus(WorkflowStatus.VotingSessionEnded,WorkflowStatus.VotesTallied);
+        emit eventCountVote(false);
         return Proposals;
     }
 }

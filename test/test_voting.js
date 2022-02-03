@@ -14,6 +14,7 @@ contract("Voting", function(accounts){
 
             await Voting.registerVoter(user1,{from:owner});
             await Voting.registerVoter(user2,{from:owner});
+            await Voting.registerVoter(user3,{from:owner});
 
             await Voting.startProposals({from:owner});
 
@@ -35,11 +36,6 @@ contract("Voting", function(accounts){
         });
         it("test",async function(){
             console.log(await Voting.Winner.call());
-            // console.log(await Voting.Proposals.call(1));
-            //
-            // console.log(await Voting.finalist.call(0));
-            // console.log(await Voting.finalist.call(1));
-
         });
     });
 });
