@@ -8,7 +8,7 @@ pragma solidity ^0.8.7;
 * @dev the funds used are fictitious funds and in no case ERC-20
 */
 contract Bank{
-    mapping(address => uint) _balances;
+    mapping(address => uint) private _balances;
 
     event Deposit(uint _amount);
     event Transfer(address payable _recipient, uint _amount);

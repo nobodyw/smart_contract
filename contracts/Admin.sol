@@ -10,8 +10,8 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 */
 contract Admin is Ownable{
 
-    mapping(address => bool) WhiteList;
-    mapping(address => bool) BlackList;
+    mapping(address => bool) private WhiteList;
+    mapping(address => bool) private BlackList;
 
     event Whitelisted(address userWhiteList, bool isWhiteList);
     event BlackListed(address userBlackList, bool isBlackList);
