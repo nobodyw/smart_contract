@@ -29,6 +29,7 @@
     "web3": "^1.7.0"
   },
   "devDependencies": {
+    "eth-gas-reporter": "^0.2.24",
     "solc-0.8": "npm:solc@^0.8.11"
   }
 }
