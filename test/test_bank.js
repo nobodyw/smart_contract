@@ -14,7 +14,7 @@ contract("Bank", function(accounts){
             await Bank.deposit(Web3.utils.toBN(5 * (10 **18)),{from:userBank});
         });
 
-        it("Owner and userBank should deposit 10p18 and 5p18 in his bank account",async() =>{
+        it("Fail if amount is 0 or Balance does not have the right price ",async() =>{
             await expectRevert(Bank.deposit(0, {from:owner}),'amount is to low');
             Assert.equal(await Bank.balanceOf(owner,{from:owner}),
                 10*(10**18),'error in deposit Owner');
@@ -22,7 +22,7 @@ contract("Bank", function(accounts){
                 5*(10**18),'error in deposit userBank');
         });
 
-        it("Owner should transfer 1p18 to userBank", async() => {
+        it("Fail if balance does not have the right price after Transfer val", async() => {
             await expectRevert(Bank.transfer(userBank,0,{from:owner}),
                 'amount is to low');
             await expectRevert(Bank.transfer(owner,100,{from:owner}),
