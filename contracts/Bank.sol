@@ -30,8 +30,8 @@ contract Bank{
         return _balances[_address];
     }
 
-    /*
-    * @notice allows you to send funds to any address
+/*
+* @notice allows you to send funds to any address
 * @dev the funds used are fictitious funds and in no case ERC-20
 */
     function transfer(address payable _recipient, uint _amount) public payable{
