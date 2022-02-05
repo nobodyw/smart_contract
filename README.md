@@ -6,7 +6,7 @@
 > I create smart contracts with their tests in Javascript in order to
 > train myself in Solidity and its environment
 
-  /play sexyback
+
 ## :package: *Installation project (Truffle)*  
   
 Clone the repository:  
