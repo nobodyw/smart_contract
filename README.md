@@ -1,11 +1,12 @@
 
+
 # nobodyW - Smart Contract :briefcase:  
   
 
 > I create smart contracts with their tests in Javascript in order to
 > train myself in Solidity and its environment
 
-  
+  /play sexyback
 ## :package: *Installation project (Truffle)*  
   
 Clone the repository:  
@@ -50,3 +51,15 @@ The contract allows the owner to add an address to a whitelist or a blacklist
 :point_down: Try online contracts (Ropsten etherscan)
 
 [https://ropsten.etherscan.io/address/0xE86ac2911f45159080e6Bc14cDf28B7628DC4491#code](https://ropsten.etherscan.io/address/0xE86ac2911f45159080e6Bc14cDf28B7628DC4491#code)  
+
+----------------------------  
+
+3. Decentralize decentralized voting system `Voting.sol` :man: :raised_hands: :woman:
+  
+The contract allows you to save your proposal and vote for your favorite proposal (you must be registered by the contract administrator to participate)
+  
+`You can view the contract Voting.sol and interact with the Ropsten testnet`  
+
+:point_down: Try online contracts (Ropsten etherscan)
+
+[https://ropsten.etherscan.io/address/0x7e4F8fe1CA312F5e2F27CfDC41EE233b29C965Da#code](https://ropsten.etherscan.io/address/0x7e4F8fe1CA312F5e2F27CfDC41EE233b29C965Da#code)
