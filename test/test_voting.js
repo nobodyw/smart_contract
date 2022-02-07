@@ -34,8 +34,15 @@ contract("Voting", function(accounts){
             await Voting.endVote({from:owner});
             await Voting.countVote({from:owner});
         });
-        it("test",async function(){
-            // console.log(await Voting.Winner.call());
+        it("Fail if finalist is not find",async function(){
+            await Voting.Winner.call({from:owner},function (error,result){
+                descriptionWinner = result.description;
+            });
+            await Voting.finalist.call(0,{from:owner},function(error,result){
+                descriptionFinalist = result.description;
+            });
+            Assert.equal(descriptionWinner, descriptionFinalist,
+                'The winner could not be found');
         });
     });
 

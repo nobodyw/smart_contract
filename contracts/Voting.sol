@@ -179,7 +179,7 @@ contract Voting is Ownable{
 */
     function countVote() external onlyOwner returns(Proposal[] memory) {
         require(workflowStatus == WorkflowStatus.VotingSessionEnded, 'cannot count vote');
-
+        require(Proposals.length >= 1,'there are no finalists');
         uint indexWinner = 0;
         delete finalist;
 
