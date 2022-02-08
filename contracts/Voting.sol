@@ -13,7 +13,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 */
 contract Voting is Ownable{
 
-    mapping(address => Voter) private Voters;
+    mapping(address => Voter) public Voters;
     Proposal[] public Proposals;
     Proposal[] public finalist;
     Proposal public Winner;
