@@ -19,7 +19,7 @@ contract("Voting", function(accounts){
        it("Fail if Owner is regitered as a voter",async function(){
           await expectRevert(Voting.registerVoter(owner,{from:owner}),"The Owner don't participate");
        });
-       it("fail if the voter is not registered correctly",async function(){
+       it("Fail if the voter is not registered correctly",async function(){
            await Voting.registerVoter(user1,{from:owner});
            await Voting.Voters.call(user1,function (error,result){
                Assert.equal(result.isRegistered,true,'Voter isRegistered should be true');
@@ -41,6 +41,59 @@ contract("Voting", function(accounts){
                 });
         });
     });
+
+    context("Test function voterAddProposal", function(){
+        beforeEach(async function(){
+            Voting = await VotingContract.new({from:owner});
+            await Voting.registerVoter(user1,{from:owner});
+            await Voting.registerVoter(user2,{from:owner});
+            await Voting.startProposals({from:owner});
+        });
+        it("Fail if description is empty",async function(){
+            await expectRevert(Voting.voterAddProposal("",{from:user1}),
+                "your description is empty");
+        });
+        it("Fail if description already exists",async function(){
+            await Voting.voterAddProposal("my description",{from:user1});
+            await expectRevert(Voting.voterAddProposal("my description",{from:user2}),
+                "this description is already used");
+        });
+        it("Fail if the proposals is not registered correctly", async function(){
+            await Voting.voterAddProposal("my description",{from:user1});
+            await Voting.Proposals.call(0,function(error,result){
+                Assert.equal(result.description,
+                    "my description",
+                    'Proposal description should be "my description"');
+                Assert.equal(result.proposalAddress,
+                    user1,
+                    'Proposal proposalAddress should be address user1');
+                Assert.equal(result.voteCount,
+                    0,
+                    'Proposal voteCount should be 0');
+                Assert.equal(result.numberFinalist,
+                    0,
+                    'Proposa numberFinalist should be 0');
+            });
+        });
+        it("Fail if Event registerProposal does not have the correct data",async function(){
+            const newProposal = await Voting.voterAddProposal('my description',{from:user1});
+            await Voting.Proposals.call(0,function(error,result){
+                checkProposal = result;
+            });
+            await expectEvent(newProposal,
+                'registerProposal',
+                {
+                    _proposal: [
+                        checkProposal.proposalAddress,
+                        checkProposal.description,
+                        checkProposal.voteCount.toNumber().toString(),
+                        checkProposal.numberFinalist.toNumber().toString()]
+            });
+        });
+    });
+
+
+
     context("Try to run a complete vote with a tie then a 2nd round", function(){
         beforeEach(async function(){
             Voting = await VotingContract.new({from:owner});
